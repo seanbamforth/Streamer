@@ -47,7 +47,6 @@ local.properties
 [Rr]elease/
 x64/
 build/
-IdeSrc/
 [Bb]in/
 [Oo]bj/
 
@@ -220,3 +219,4 @@ pip-log.txt
 *.tag
 *.k1
 Filelist.cfg
+IdeSrc/
