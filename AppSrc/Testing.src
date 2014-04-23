@@ -1,0 +1,46 @@
+Use Windows.pkg
+Use cHtmlHelp.pkg
+Use cApplication.pkg
+
+Object oHtmlHelp is a cHtmlHelp
+End_Object
+
+Object oApplication is a cApplication
+    Set pbPreserveEnvironment to False
+    Set peHelpType to htHtmlHelp
+End_Object
+
+
+Class cStreamer is a cObject 
+    Function FirstBlock Integer iBlockSize 
+    End_Function
+    Function FirstBlock Integer iBlockSize 
+    End_Function
+    Function FirstBlock Integer iBlockSize 
+    End_Function
+End_Class
+
+Global_Variable grcFileStreamer
+Class cFileStreamer is a cStreamer 
+End_Class
+Move (RefClass(cFileStreamer)) to grcFileStreamer
+
+
+//we're worrying about blocking, but no need - 
+//we can have a blockStreamer that reads a large block from a file, and sends it out a bit at a time. 
+
+Move (CreateStreamer(grcFileStreamer,"c:\filename.txt"))) to hStreamer
+Move (CreateStreamer(grcHexStreamer,hStreamer))) to hHexStreamer
+Move (CreateStreamer(grcDashSpaced),hHexStreamer))) to hDashed
+
+Move (ReturnToStart(hStreamer)) to isOK 
+If (isOK) Move (NextBlock(hStreamer,20)) to isOK 
+While (isOK) 
+    Showln (CurrentText(hDashed))
+    Move (NextBlock(hStreamer,20)) to isOK 
+Loop
+
+Send DestroyStreamer to hDashed 
+
+
+Send Info_Box "Hello World" "Visual DataFlex Basic Project"
