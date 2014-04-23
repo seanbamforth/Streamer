@@ -47,6 +47,7 @@ local.properties
 [Rr]elease/
 x64/
 build/
+IdeSrc/
 [Bb]in/
 [Oo]bj/
 
@@ -213,7 +214,9 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
 *.dat
 *.hdr
 *.tag
 *.k1
+Filelist.cfg
